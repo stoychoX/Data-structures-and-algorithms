@@ -36,7 +36,7 @@ int main() {
 Очевидно това не сработи, но защо? Във функцията *redirect* на *ptr* се прави **копие**. После това копие започва да сочи към *dest*, но на нас това не ни помага! Ние искаме да пренасочим **самия указател а не неговото копие**. Тук на помощ идват референциите (или псевдонимите)! Ако пренапишем функцията по следния начин
  
 ```c++
-void redirect(int*& ptr, int dest) {
+void redirect(int*& ptr, int& dest) {
     ptr = &dest;
 }
 ```
@@ -47,7 +47,7 @@ void redirect(int*& ptr, int dest) {
 ```c++
 #include<iostream>
 
-void redirect(int** ptr, int dest) {
+void redirect(int** ptr, int& dest) {
     *ptr = &dest;
 }
 
