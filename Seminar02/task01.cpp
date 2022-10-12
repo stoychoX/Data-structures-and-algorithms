@@ -3,24 +3,28 @@
 #include<iostream>
 
 std::string removeStars(const std::string& s) {
-        std::stack<char> st;
-        
-        for(char c : s) {
-            if(c == '*')
-                st.pop();
-            else
-                st.push(c);
-        }
-        
-        std::string res(st.size(), '\0');
-        size_t idx = st.size() - 1;
+	std::stack<char> st;
 
-        while(!st.empty()) {
-            res[idx--] = st.top();
-            st.pop();
-        }
-        
-        return res;
+	for (int i = 0; i < s.size(); i++) {
+		if (s[i] == '*') {
+			if (st.empty())
+				throw "invalid expr";
+			else
+				st.pop();
+		}
+		else
+			st.push(s[i]);
+	}
+
+	std::string res(st.size(), '\0');
+	size_t idx = st.size() - 1;
+
+	while (!st.empty()) {
+		res[idx--] = st.top();
+		st.pop();
+	}
+
+	return res;
 }
 
 int main() {
