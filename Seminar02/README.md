@@ -5,7 +5,7 @@
 Пример:
 * aa* -> "a"
 * erase***** -> ""
-* thi*s i*s exampl*e -> "ths s exampe"
+* thi\*s i\*s exampl\*e -> "ths s exampe"
 
 Задачата да се реализира за линейно време с линейна памет.
 ## Задача втора
