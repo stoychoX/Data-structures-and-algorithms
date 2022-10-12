@@ -23,7 +23,7 @@ bool isBalanced(const  std::string& str){
     }
 
 
-    if( !s.empty() && !oneDeletedSymbol ){
+    if( !(s.empty() || oneDeletedSymbol) ){
         s.pop();
     }
     return s.empty();
