@@ -13,8 +13,8 @@ private:
         LinkedNode(const T& argData, LinkedNode* argNext = nullptr) : data {argData}, next{argNext} {} 
     };
 
-    LinkedNode* head;                   // Последния добавен елемент в опашката
-    LinkedNode* tail;                   // Първия добавен елемент в опашката
+    LinkedNode* head;                   // Първия добавен елемент в опашката
+    LinkedNode* tail;                   // Последния добавен елемент в опашката
     size_t queueSize;
 
     void copy(const LinkedQueue<T>&);
