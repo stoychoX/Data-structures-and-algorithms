@@ -1,5 +1,25 @@
 #include<list>
 #include<iostream>
+#include"../Seminar04/linked-list-utils.h"
+
+// Пример как да напишем една и съща функция
+// Чрез итератори и чрез пойнтър представянето
+
+// Функцията map приема свързан списък и функция която приема int
+// и прилага функцията върху всеки елемент от списъка
+void mapOnSTLList(std::list<int>& ll, void (*f)(int&)) {
+    for(int& elem : ll)
+        f(elem);
+}
+
+void mapOnListRepresentedAsPointer(LinkedListNode<int>* ll, void (*f)(int&)) {
+    while(ll) {
+        f(ll->data);
+        ll = ll->next;
+    }
+}
+
+//.....
 
 void printList(const std::list<int>& myList, const char* msg) {
     if(msg != "")
@@ -69,4 +89,19 @@ int main() {
     // Можем и да го сортираме наобратно
     myList.sort([](const int& fst, const int& snd) -> bool { return fst > snd; });
     printList(myList, "First list after being sorted with >");
+
+    LinkedListNode<int>* pointreLinkedlist = 
+            new LinkedListNode<int>(1, 
+            new LinkedListNode<int>(2,
+            new LinkedListNode<int>(3,
+            new LinkedListNode<int>(4,
+            new LinkedListNode<int>(5)))));
+    
+    mapOnListRepresentedAsPointer(pointreLinkedlist, [](int& x) -> void {x = 2*x; });
+    mapOnSTLList(second, [](int& x) -> void { x = 2*x; });
+
+    printList(second, "Second list after mappint 2*");
+    std::cout << "Pointer linked list after mappint 2* " << std::endl;
+    printLinkedList(pointreLinkedlist);
+    std::cout << std::endl;
 }
