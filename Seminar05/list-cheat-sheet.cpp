@@ -1,0 +1,72 @@
+#include<list>
+#include<iostream>
+
+void printList(const std::list<int>& myList, const char* msg) {
+    if(msg != "")
+        std::cout << msg << std::endl;
+    
+    // range based for loop който извежда всички елементи на списъка
+    for(const int& elementInList : myList) 
+        std::cout << elementInList << " ";
+    std::cout << std::endl;
+}
+
+int main() {
+    std::list<int> myList;
+
+    const auto f = myList.begin();
+
+    // Добави елемент в края на листа
+    for (int i = 0; i < 10; i++)
+        myList.push_back(i);
+
+    // Добави елемент в началото на листа
+    for(int i = 10; i < 20; i++)
+        myList.push_front(i);
+
+    printList(myList, "Added the elements from [0..9] to the back and [10..19] to the front");
+
+    // Можем да изтриваме елементи на позиция
+    myList.erase(myList.begin());
+    printList(myList, "Erased the first element");
+
+    // Удобен начин да обърнем списък
+    myList.reverse();
+    printList(myList, "Reversed the linked list");
+
+    // Можем да премахнем елемент
+    myList.remove(10);
+    printList(myList, "After removing 10 from the list");
+
+    // Можем да премахнем всички елементи, които отговарят на някакъв предикат
+    // Аргумента на remove_if е булева функция. Ще останат само тези за които условието е лъжа.
+    myList.remove_if([](const int& currentElement) -> bool { return currentElement % 2; });
+    printList(myList, "Filter all odd elements");
+ 
+    // myList.begin(); begin iterator
+    // myList.end();   end iterator
+
+    // myList.cbegin(); constang begin iterator
+    // myList.cend();   constant end iterator
+
+    // Мога да създавам списъци така
+    std::list<int> second{1, 2, 3, 4, 5};
+    printList(second, "Create second list with initializer list");
+    
+    // Премества елементи от един лист в друг
+    myList.splice(myList.begin(), second);
+    printList(myList, "First list after splice");
+    printList(second, "second list after splice");
+
+    // Да си върнем малко елементи във втория списък
+    second.assign({1, 2, 3, 4, 5});
+    printList(second, "Second list after .assign({1, 2, 3, 4, 5})");
+
+    // Можем да сортираме листа
+    myList.sort();
+    printList(myList, "First list after beigg sorted");
+
+    // Можем и да го сортираме наобратно
+    myList.sort([](const int& fst, const int& snd) -> bool { return fst > snd; });
+    printList(myList, "First list after being sorted with >");
+}
