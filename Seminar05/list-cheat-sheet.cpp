@@ -104,4 +104,19 @@ int main() {
     std::cout << "Pointer linked list after mappint 2* " << std::endl;
     printLinkedList(pointreLinkedlist);
     std::cout << std::endl;
+
+    // Как да добавяме елементи на произволна позиция?
+
+    // Итератор към началото
+    std::list<int>::iterator it = myList.begin();
+
+    // Отиваме на позицията
+    for (size_t i = 0; i < 2; i++) {
+        ++it;
+    }
+
+    // Добавяме
+    myList.insert(it, 10000);
+    // insert може да вмъква и цели рейнджове
+    printList(myList, "My list after adding 10000 in third pos");
 }
