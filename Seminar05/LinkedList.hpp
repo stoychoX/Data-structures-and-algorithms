@@ -198,6 +198,7 @@ LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>& other) {
 template<class T>
 LinkedList<T>& LinkedList<T>::operator=(LinkedList<T>&& other) {
     if(this != &other) {
+        free();
         move(other);
     }
     return *this;
