@@ -15,7 +15,6 @@ private:
 
     void free();
     void copy(const LinkedList<T>&);
-    void move(LinkedList<T>&&);
 public:
     class Iterator {
         private:
@@ -167,23 +166,18 @@ void LinkedList<T>::copy(const LinkedList<T>& other) {
 }
 
 template<class T>
-void LinkedList<T>::move(LinkedList<T>&& other) {
-    head = other.head;
-    tail = other.tail;
-    sizeOfList = other.sizeOfList;
-
-    other.tail = other.head = nullptr;
-    other.sizeOfList = 0;
-}
-
-template<class T>
-LinkedList<T>::LinkedList(const LinkedList<T>& other) {
+LinkedList<T>::LinkedList(const LinkedList<T>& other) : head {nullptr}, tail{ nullptr } {
     copy(other);
 }
 
 template<class T>
 LinkedList<T>::LinkedList(LinkedList<T>&& other) {
-    move(other);
+    head = other.head;
+    tail = other.tail;
+    sizeOfList = other.sizeOfList;
+
+    other.head = other.tail = nullptr;
+    other.sizeOfList = 0;
 }
 
 template<class T>
@@ -199,7 +193,13 @@ template<class T>
 LinkedList<T>& LinkedList<T>::operator=(LinkedList<T>&& other) {
     if(this != &other) {
         free();
-        move(other);
+        
+        head = other.head;
+        tail = other.tail;
+        sizeOfList = other.sizeOfList;
+
+        other.head = other.tail = nullptr;
+        other.sizeOfList = 0;
     }
     return *this;
 }
