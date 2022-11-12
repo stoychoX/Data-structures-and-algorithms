@@ -129,6 +129,9 @@ public:
     const T& front() const;
     const T& back() const;
 
+    T& front();
+    T& back();
+
     bool empty() const;
     size_t size() const;
 
@@ -292,7 +295,23 @@ const T& LinkedList<T>::front() const {
 }
 
 template<class T>
+T& LinkedList<T>::front() {
+    if(empty())
+        throw std::runtime_error("Empty list!");
+    
+    return head->data;
+}
+
+template<class T>
 const T& LinkedList<T>::back() const {
+    if(empty()) 
+        throw std::runtime_error("Empty list!");
+
+    return tail->data;
+}
+
+template<class T>
+T& LinkedList<T>::back() {
     if(empty()) 
         throw std::runtime_error("Empty list!");
 
