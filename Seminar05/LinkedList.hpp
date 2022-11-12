@@ -68,7 +68,7 @@ public:
         }
 
         ConstIterator operator++(int) {
-            Iterator temp = *this;
+            ConstIterator temp = *this;
             ++(*this);
             return temp;
         }
@@ -112,11 +112,11 @@ public:
         return Iterator(nullptr);
     }
 
-    ConstIterator cbegin() {
+    ConstIterator cbegin() const {
         return ConstIterator(head);
     }
 
-    ConstIterator cend() {
+    ConstIterator cend() const {
         return ConstIterator(nullptr);
     }
 
