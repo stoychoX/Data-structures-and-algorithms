@@ -105,11 +105,11 @@ public:
     }
 
     ConstIterator begin() const {
-        return Iterator(head);
+        return ConstIterator(head);
     }
 
     ConstIterator end() const {
-        return Iterator(nullptr);
+        return ConstIterator(nullptr);
     }
 
     ConstIterator cbegin() const {
