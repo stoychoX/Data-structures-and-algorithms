@@ -12,7 +12,7 @@ bool isDigit(char c) {
 }
 
 int eval(int fst, int snd, char op) {
-    assert(isOperation(c));
+    assert(isOperation(op));
     
     switch (op) {
     case '+':
