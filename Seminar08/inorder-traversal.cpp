@@ -1,7 +1,7 @@
 #include "tree-utils.h"
 
 template <typename T>
-void inorderTraversal(Tree<T> *tree) {
+void inorderTraversal(const Tree<T> *tree) {
     if (tree == nullptr) {
         return;
     }

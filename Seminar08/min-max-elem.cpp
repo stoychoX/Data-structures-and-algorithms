@@ -3,8 +3,8 @@
 
 // for regular binary trees
 template <typename T>
-int max_elem(Tree<T> *tree) {
-    int res = tree->data;
+T max_elem(Tree<T> *tree) {
+    T res = tree->data;
 
     if (tree->left != nullptr) {
         res = std::max(res, max_elem(tree->left));
@@ -17,8 +17,8 @@ int max_elem(Tree<T> *tree) {
 }
 
 template <typename T>
-int min_elem(Tree<T> *tree) {
-    int res = tree->data;
+T min_elem(Tree<T> *tree) {
+    T res = tree->data;
 
     if (tree->left != nullptr) {
         res = std::min(res, min_elem(tree->left));
@@ -32,16 +32,16 @@ int min_elem(Tree<T> *tree) {
 
 // for binary search trees
 template <typename T>
-int max_elem_bst(Tree<T> *tree) {
-    while (tree->right != NULL)
+T max_elem_bst(Tree<T> *tree) {
+    while (tree->right != nullptr)
         tree = tree->right;
 
     return tree->data;
 }
 
 template <typename T>
-int min_elem_bst(Tree<T> *tree) {
-    while (tree->left != NULL)
+T min_elem_bst(Tree<T> *tree) {
+    while (tree->left != nullptr)
         tree = tree->left;
 
     return tree->data;
