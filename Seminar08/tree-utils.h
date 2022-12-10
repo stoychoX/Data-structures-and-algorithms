@@ -6,7 +6,6 @@
 #include<fstream>
 
 // Важни неща:
-
 template<class T>
 struct Tree {
     T data;
@@ -23,6 +22,81 @@ void freeTree(Tree<T>* t) {
     freeTree(t->left);
     freeTree(t->right);
     delete t;
+}
+
+template<class T>
+void insertInBST(Tree<T>*& t, const T& elem) {
+    if (t == nullptr) {
+        t = new Tree<T>(elem);
+        return;
+    }
+    else if (t->data < elem) {
+        insertInBST(t->right, elem);
+    }
+    else {
+        insertInBST(t->left, elem);
+    }
+}
+
+template<class T>
+Tree<T>* getMinRightNode(const Tree<T>* t) {
+	assert(t != nullptr);
+
+	Tree<T>* iter = t;
+
+	while (iter->left) {
+		iter = iter->left;
+	}
+	return iter;
+}
+
+template<class T>
+bool removeElement(Tree<T>*& t, const T& elem) {
+	if (t == nullptr)
+		return false;
+
+	if (t->data > elem) {
+		return removeElement(t->left, elem);
+	}
+	else if (t->data < elem) {
+		return removeElement(t->right, elem);
+	}
+	else {																// Намерили сме елемента
+		if (!t->left && !t->right) {									// Листо
+			delete t;
+			t = nullptr; //!!
+		}
+		else if (!t->left && t->right) {								// Има само дясно поддърво
+			Tree<T>* toDelete = t;
+			t = t->right;
+			delete toDelete;
+		}
+		else if (t->left && !t->right) {								// Има само ляво поддърво
+			Tree<T>* toDelete = t;
+			t = t->left;
+			delete toDelete;
+		}
+		else {															// Вътрешен връх. 
+			T newData = getMinRightNode(t->right)->data;
+			t->data = newData;
+			removeElement(t->right, newData);
+		}
+		return true;
+	}
+}
+
+template<class T>
+bool containsBST(const Tree<T>* t, const T& elem) {
+	if (t == nullptr)
+		return false;
+
+	if (t->data == elem)
+		return true;
+
+	if (t->data < elem)
+		return containsBST(t->right, elem);
+
+	return containsBST(t->left, elem);
 }
 
 // Неща за мое удобство, не е нужно да ги четете:
