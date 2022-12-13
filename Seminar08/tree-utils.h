@@ -120,7 +120,6 @@ void innerVertexRemoveCase(Tree<T>*& inVertex) {
 		firstGoingDown = false;
 	}
 
-	bool isLeaf = ((*minNode)->right == nullptr);
 	Tree<T>* originalRight = (*minNode)->right;
 
 	(*minNode)->left = inVertex->left;
@@ -133,7 +132,7 @@ void innerVertexRemoveCase(Tree<T>*& inVertex) {
 	inVertex = (*minNode);
 
 	if (!firstGoingDown)
-		(*minNodeParent)->left = isLeaf ? nullptr : originalRight;
+		(*minNodeParent)->left = originalRight;
 
 	delete toDelete;
 }
