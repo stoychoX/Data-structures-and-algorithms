@@ -75,7 +75,7 @@ void updateHeight(Node<T>*& r) {
     if(r == nullptr)
         return;
     
-    r->height = getHeight(r->left) + getHeight(r->right) + 1;
+    r->height = std::max(getHeight(r->left), getHeight(r->right)) + 1;
 }
 ```
 
