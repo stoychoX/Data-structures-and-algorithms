@@ -108,7 +108,7 @@ Tree<int>* createExampleOne() {
 ```cpp
 template<class T>
 bool isLeaf(const Tree<T>* t) {
-    return t != nullptr && r->left == nullptr && t->right == nullptr;
+    return t != nullptr && t->left == nullptr && t->right == nullptr;
 }
 ```
 
