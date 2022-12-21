@@ -23,9 +23,9 @@ void BFS(const MatrixGraph& g, MatrixGraph::vertex_t start) {
 
         auto successors = g.getSuccessors(current);
 
-        for(const auto& edge : successors) {
-            if(!visited[edge])
-                q.push(edge);
+        for(const auto& currentVertex : successors) {
+            if(!visited[currentVertex])
+                q.push(currentVertex);
         }
     }
 }
