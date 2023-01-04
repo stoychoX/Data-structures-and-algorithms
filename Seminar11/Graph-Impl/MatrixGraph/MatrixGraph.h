@@ -45,6 +45,8 @@ class MatrixGraph {
 
     std::vector<vertex_t> getSuccessors(vertex_t) const;
     std::vector<vertex_t> getPredecessors(vertex_t) const;
+    // Same as getSuccessors, here for interface purposes.
+    std::vector<vertex_t> adjacent(vertex_t) const; 
 };
 
 #endif

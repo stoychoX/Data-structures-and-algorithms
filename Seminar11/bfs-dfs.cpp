@@ -49,9 +49,10 @@ void DFS(const AdjListGraph& g, AdjListGraph::vertex_t start) {
     DFSRec(visited, g, start);
 }
 
+
 int main() {
-    MatrixGraph g(5);
-    // AdjListGraph g(5);
+    // MatrixGraph g(5);
+    AdjListGraph g(5);
     g.addEdge(0, 2, 1);
     g.addEdge(0, 3, 1);
     g.addEdge(0, 1, 1);
@@ -60,5 +61,5 @@ int main() {
     g.addEdge(3, 4, 1);
     g.addEdge(1, 3, 1);
 
-    BFS(g, 0);
+    DFS(g, 0);
 }

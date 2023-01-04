@@ -87,6 +87,11 @@ std::vector<vertex_t> MatrixGraph::getPredecessors(vertex_t from) const {
     return result;
 }
 
+std::vector<vertex_t> MatrixGraph::adjacent(vertex_t from) const {
+    return getSuccessors(from);
+}
+
+
 size_t MatrixGraph::vertexCount() const {
     return data.size();
 }
