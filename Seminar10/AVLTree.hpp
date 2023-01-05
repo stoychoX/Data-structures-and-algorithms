@@ -48,12 +48,12 @@ private:
 
 			if (rootBalance == -2) {
 				if (leftBalance == 1) {
-					rotateRight(r->left);
+					rotateLeft(r->left);
 					updateHeight(r->left->left);
 					updateHeight(r->left);
 				}
 
-				rotateLeft(r);
+				rotateRight(r);
 				updateHeight(r->left);
 				updateHeight(r);
 			}
