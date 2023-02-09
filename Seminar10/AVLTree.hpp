@@ -54,7 +54,7 @@ private:
 				}
 
 				rotateRight(r);
-				updateHeight(r->left);
+				updateHeight(r->right);
 				updateHeight(r);
 			}
 		}
