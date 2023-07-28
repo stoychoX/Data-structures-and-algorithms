@@ -27,6 +27,25 @@ std::string removeStars(const std::string& s) {
 	return res;
 }
 
+std::string removeStarsTwo(const std::string& str) {
+    // As we are using only push_back and pop_back here
+    // the std::string is equivalent to a stack
+    // and we save up some time and memory.
+    std::string result;
+
+    for(char c : str) {
+        if(c == '*') {
+            result.pop_back();
+        }
+        else {
+            result.push_back(c);
+        }
+    }
+
+    return result;
+}
+
+
 int main() {
 
 }
