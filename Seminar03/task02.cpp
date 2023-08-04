@@ -11,8 +11,8 @@ class minMoves {
     board playground;
 
     void cleanPlayground() {
-        for (auto &col : playground)
-            for (auto &pos : col)
+        for (auto &row : playground)
+            for (auto &pos : row)
                 pos = false;
     }
 
