@@ -6,7 +6,7 @@ size_t height(const Tree<T>* tree) {
 	if (!tree)
 		return 0;
 
-	return 1 + std::max(heightOfTree(tree->left), heightOfTree(tree->right));
+	return 1 + std::max(height(tree->left), height(tree->right));
 }
 
 int main(){
