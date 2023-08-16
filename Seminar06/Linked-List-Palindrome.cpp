@@ -1,6 +1,7 @@
 #include"../Seminar04/linked-list-utils.h"
 
-bool isLinkedListPalRec(const LinkedListNode<int>*& begin, const LinkedListNode<int>* end) {
+template<class T>
+bool isLinkedListPalRec(const LinkedListNode<T>*& begin, const LinkedListNode<T>* end) {
     if(end == nullptr)
         return true;
 
@@ -15,8 +16,8 @@ bool isLinkedListPal(const LinkedListNode<T>* ll) {
     if(ll == nullptr)
         return true;
     
-    const LinkedListNode<int>* begin = ll;
-    const LinkedListNode<int>* end = ll;
+    const LinkedListNode<T>* begin = ll;
+    const LinkedListNode<T>* end = ll;
     
     return isLinkedListPalRec(begin, end);
 }
