@@ -9,5 +9,5 @@
 * std::lower_bound()
 * std::upper_bound()
 * std::find()
-* std::find_iо()
+* std::find_if()
 * std::list::splice
