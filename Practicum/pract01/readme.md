@@ -76,3 +76,4 @@ int main() {
 ## Задачи и линк към методите на `std::vector`
 - [**std::vector**](https://cplusplus.com/reference/vector/vector/)
 - [**Линк към задачите**](https://leetcode.com/problem-list/an1ryio3/)
+- [Линк към таблица с leetcode акаунти](https://docs.google.com/spreadsheets/d/1KVdic02U7f97GT2LFu67t9Z4NqyFLmCj1TjyYdrcLBE/edit?gid=0#gid=0)
