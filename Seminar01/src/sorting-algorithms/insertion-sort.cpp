@@ -5,7 +5,7 @@ void insertionSort(T* arr, unsigned length)
 {
     for (size_t i = 1; i < length; i++)
     {
-        int elementToInsert = arr[i];
+        T elementToInsert = arr[i];
         int j = i - 1;
         while (j >= 0 && arr[j] > elementToInsert)
         {
