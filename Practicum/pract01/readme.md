@@ -23,7 +23,7 @@ void sort(RandomIt first, RandomIt last, Compare comp);
   - comp (по избор): критерий за сортиране (по default се използва operator<).
 
 - `Сложност`: std::sort има средна времева сложност O(n*log n), където n е броят на елементите, които искаме да бъдат сортирани.
-- `In-Place`: std::sort е in-place алгоритъм.
+- `In-Place`: std::sort не е in-place алгоритъм.
 - `Stable`: std::sort не е стабилен алгоритъм.
 
 - Пример с функция:
