@@ -4,7 +4,7 @@
 
 ![1_lmzbRxK0FNgxzu8owsm4cA](https://github.com/user-attachments/assets/e679a298-8110-4fca-b375-5f52ec70f87a)
 
-[**Counting Sort**]() е ефективен алгоритъм за сортиране, подходящ за елементи с ограничен диапазон на стойности. Работи чрез преброяване на броя на срещанията на елементите. 
+[**Counting Sort**](https://github.com/stoychoX/Data-structures-and-algorithms/blob/main/Practicum/pract02/CountingSort.cpp) е ефективен алгоритъм за сортиране, подходящ за елементи с ограничен диапазон на стойности. Работи чрез преброяване на броя на срещанията на елементите. 
 
 > [!CAUTION]
 > Той не използва директно сравнения между елементите.
