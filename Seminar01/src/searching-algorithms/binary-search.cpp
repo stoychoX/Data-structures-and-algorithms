@@ -27,7 +27,21 @@ int binarySearch(const T* arr, size_t size, T elem)
     return -1;
 }
 
+constexpr unsigned EXAMPLE_SIZE = 7;
+
 int main()
 {
-    
+    int example[EXAMPLE_SIZE] = { 1, 2, 4, 8, 16, 32, 64 };
+    int needle = 4;
+
+    int index = binarySearch(example, EXAMPLE_SIZE, needle);
+    if(index == -1)
+    {
+        std::cout << "Unable to find the element" << std::endl;
+    }
+    else
+    {
+        std::cout << "Element " << needle << " found at " 
+            << index << " position: " << example[index] << std::endl; 
+    }
 }
