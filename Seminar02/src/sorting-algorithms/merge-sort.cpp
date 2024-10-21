@@ -35,11 +35,6 @@ void merge(T* firstArray, unsigned firstSize,
     {
         buffer[resultIter++] = secondArray[secondIter++];
     }
-
-    for (size_t i = 0; i < firstSize + secondSize; i++)
-    {
-        firstArray[i] = buffer[i];
-    }
 }
 
 
