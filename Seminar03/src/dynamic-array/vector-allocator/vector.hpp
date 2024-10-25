@@ -1,3 +1,6 @@
+//! The allocator implementation is additional
+//! information and is not mandatory.
+
 #pragma once
 #include "../iterator/iterator.hpp"
 #include "allocator.hpp"
