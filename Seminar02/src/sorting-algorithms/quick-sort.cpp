@@ -4,7 +4,6 @@
 
 /// @brief Reorders the elements in such a way that all elements for which are less than pivot 
 // precede all elements which are greater or equal to pivot. Relative order of the elements is not preserved.
-// TODO: remove copy somehow???
 template <class T>
 size_t partition(T* pArr, size_t len)
 {
@@ -37,12 +36,12 @@ size_t partition(T* pArr, size_t len)
 }
 
 template<class T>
-void quickSort(T* arr, unsigned size)
+void quickSort(T* arr, size_t size)
 {
     if(size < 2)
         return;
     
-    unsigned pivotPos = partition(arr, size);
+    size_t pivotPos = partition(arr, size);
 
     quickSort(arr, pivotPos);
     quickSort(arr + pivotPos + 1, size - pivotPos - 1);
@@ -51,7 +50,7 @@ void quickSort(T* arr, unsigned size)
 int main()
 {
     std::vector<int> numbers;
-    unsigned size = rand() % 10000;
+    size_t size = rand() % 10000;
     numbers.resize(size);
 
     for (size_t i = 0; i < size; i++)

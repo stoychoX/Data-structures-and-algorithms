@@ -1,3 +1,5 @@
+#include <unistd.h> // size_t
+
 void counting_sort(int* arr, size_t arrLength) {
     constexpr int MAX_SIZE = 1e5;
     int arr_copy[MAX_SIZE];
