@@ -1,35 +1,33 @@
-#include <string>
+#include <vector>
 #include <stack>
 
 class Solution
 {
 public:
-    bool isValid(std::string s)
+    std::vector<int> nextGreaterElements(std::vector<int> &nums)
     {
-        std::stack<char> open;
-
-        for (char ch : s)
+        std::stack<std::pair<int, int>> stack;
+        std::vector<int> ans(nums.size(), -1);
+        for (int i = 0; i < nums.size(); ++i)
         {
-            if (ch == '(' || ch == '{' || ch == '[')
+            while (!stack.empty() && stack.top().first < nums[i])
             {
-                open.push(ch);
+                ans[stack.top().second] = nums[i];
+                stack.pop();
             }
-            else
-            {
-                if (open.empty())
-                    return false;
 
-                if ((open.top() == '(' && ch == ')') ||
-                    (open.top() == '{' && ch == '}') ||
-                    (open.top() == '[' && ch == ']'))
-                {
-                    open.pop();
-                    continue;
-                }
-                return false;
+            stack.emplace(nums[i], i);
+        }
+
+        for (int i = 0; i < nums.size(); ++i)
+        {
+            while (!stack.empty() && stack.top().first < nums[i])
+            {
+                ans[stack.top().second] = nums[i];
+                stack.pop();
             }
         }
 
-        return open.empty();
+        return ans;
     }
 };
