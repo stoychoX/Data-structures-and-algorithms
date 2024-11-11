@@ -1,8 +1,8 @@
-# Практикум №6 по Структури от данни, спец. ИС
+# Практикум №5 по Структури от данни, спец. ИС
 
 ---
 
-[**Valid Parentheses**](https://leetcode.com/problems/valid-parentheses/description/)
+[**Next Greatest Element**](https://leetcode.com/problems/next-greater-element-ii/description/)
 
 [**Asteroid Collision**](https://leetcode.com/problems/asteroid-collision/description/)
 
