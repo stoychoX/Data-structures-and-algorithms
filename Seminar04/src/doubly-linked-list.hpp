@@ -227,7 +227,7 @@ class doubly_linked_list
 
 	const_iterator begin() const
 	{
-		return conmnst_iterator(*this, _head);
+		return const_iterator(*this, _head);
 	}
 	const_iterator end() const
 	{
@@ -317,8 +317,7 @@ void doubly_linked_list<T>::push_front(const T& data)
 template <class T>
 typename doubly_linked_list<T>::iterator doubly_linked_list<T>::insert(const_iterator position, const T& data)
 {
-	node* new_node = new node(data);
-
+	
 	if (position == begin())
 	{
 		push_front(data);
@@ -329,7 +328,7 @@ typename doubly_linked_list<T>::iterator doubly_linked_list<T>::insert(const_ite
 		push_back(data);
 		return --end();
 	}
-
+	node* new_node = new node(data);
 	node* current_node = position._node;
 	new_node->next = current_node;
 	new_node->prev = current_node->prev;
