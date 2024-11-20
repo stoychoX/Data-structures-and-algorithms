@@ -152,7 +152,7 @@ public:
 
 	};
 	
-	const_sll_iterator begin()
+	sll_iterator begin()
 	{
 		return sll_iterator(_head);
 	}
@@ -298,6 +298,10 @@ typename singly_linked_list<T>::sll_iterator singly_linked_list<T>::insert_after
 	new_node->next = itNode->next;
 	itNode->next = new_node;
     _size++;
+	if(itNode == _tail){
+        _tail = new_node;
+	}
+
 	return singly_linked_list<T>::sll_iterator(new_node);
 }
 
@@ -305,7 +309,7 @@ typename singly_linked_list<T>::sll_iterator singly_linked_list<T>::insert_after
 template <typename T>
 typename singly_linked_list<T>::sll_iterator singly_linked_list<T>::remove_after(const typename singly_linked_list<T>::const_sll_iterator& it)
 {
-    if(it == end() || size() == 1)
+    if(it == end() || !it.currentElementPtr->next)
         return end();
         
 	node* to_delete = (it + 1).currentElementPtr;
