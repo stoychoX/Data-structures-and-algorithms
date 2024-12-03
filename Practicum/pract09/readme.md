@@ -92,7 +92,7 @@ void pop_heap(RandomIt first, RandomIt last, Compare comp = Compare()) {
 
 template <typename RandomIt, typename Compare = std::less<>>
 bool is_heap(RandomIt first, RandomIt last, Compare comp = Compare()) {
-    size_t size = last - first; // should usestd:: dist for when its not vector
+    size_t size = last - first; // should use std:: dist for when its not vector
 
     for (size_t i = 0; i < size / 2; ++i) {
         size_t leftChild = 2 * i + 1;
