@@ -53,7 +53,7 @@ void heapify(RandomIt first, size_t rootIdx, size_t size, Compare comp) {
 
 template <typename RandomIt, typename Compare = std::less<>>
 void make_heap(RandomIt first, RandomIt last, Compare comp = Compare()) {
-    size_t size = last - first;
+    size_t size = last - first; // should use std::dist for when its not vector
 
     for (int i = size / 2; i >= 0; --i)
         heapify(first, i, size, comp);
@@ -74,7 +74,7 @@ void bubble_up(RandomIt first, size_t index, Compare comp) {
 
 template <typename RandomIt, typename Compare = std::less<>>
 void push_heap(RandomIt first, RandomIt last, Compare comp = Compare()) {
-    size_t size = last - first;
+    size_t size = last - first; // should use std::dist for when its not vector
 
     if (size > 1) 
         bubble_up(first, size - 1, comp);
@@ -82,7 +82,7 @@ void push_heap(RandomIt first, RandomIt last, Compare comp = Compare()) {
 
 template <typename RandomIt, typename Compare = std::less<>>
 void pop_heap(RandomIt first, RandomIt last, Compare comp = Compare()) {
-    size_t size = last - first;
+    size_t size = last - first; // should use std::dist for when its not vector
 
     if (size > 1) {
         std::swap(*first, *(last - 1));
@@ -92,7 +92,7 @@ void pop_heap(RandomIt first, RandomIt last, Compare comp = Compare()) {
 
 template <typename RandomIt, typename Compare = std::less<>>
 bool is_heap(RandomIt first, RandomIt last, Compare comp = Compare()) {
-    size_t size = last - first;
+    size_t size = last - first; // should usestd:: dist for when its not vector
 
     for (size_t i = 0; i < size / 2; ++i) {
         size_t leftChild = 2 * i + 1;
