@@ -2,7 +2,7 @@
 
 ## `Binary Heap`
 **Binary Heap**-a представлява дървовидна структура от данни, която изпълнява 2 условия:
-1) пълно двоично дърво е (всички нива са запълнени освен последното);
+1) пълно двоично дърво е (всички нива са запълнени, освен последното);
 2) всеки връх има стойност <= (респективно >=) на тази на родителя си (heap property);
 
 > [!IMPORTANT]
@@ -18,7 +18,7 @@
 - `maxHeap` - най-големият елемент е най-отгоре;
 
 ### Как от вектор можем да създадем heap?
-STL поддържа методи, които ни позволяват да работим с вектор като с heap. Това са следните:
+STL поддържа методи, които ни позволяват да работим с вектор, като го превърнем в heap. Това са следните:
 - **Превръщане на heap**: `std::make_heap(begin_it, end_it)` - O(N)
 - **Добавяне на елемент**:
   - Добавяме елемент в края на контейнера.
@@ -34,82 +34,93 @@ STL поддържа методи, които ни позволяват да р�
 #include <vector>
 
 template <typename RandomIt, typename Compare>
-void heapify(RandomIt first, size_t rootIdx, size_t size, Compare comp) {
-    size_t largest = rootIdx;
-    size_t leftChild = 2 * rootIdx + 1;
-    size_t rightChild = 2 * rootIdx + 2;
+void heapify(RandomIt first, RandomIt last, RandomIt root, const Compare& comp) {
+    size_t size = std::distance(first, last);
+    size_t rootIdx = std::distance(first, root);
 
-    if (leftChild < size && comp(*(first + largest), *(first + leftChild)))
-        largest = leftChild;
+    while (true) {
+        size_t largest = rootIdx;
+        size_t leftChild = 2 * rootIdx + 1;
+        size_t rightChild = 2 * rootIdx + 2;
 
-    if (rightChild < size && comp(*(first + largest), *(first + rightChild)))
-        largest = rightChild;
+        if (leftChild < size && comp(*(first + largest), *(first + leftChild)))
+            largest = leftChild;
 
-    if (largest != rootIdx) {
+        if (rightChild < size&& comp(*(first + largest), *(first + rightChild)))
+            largest = rightChild;
+
+        if (largest == rootIdx)
+            break;
+
         std::swap(*(first + rootIdx), *(first + largest));
-        heapify(first, largest, size, comp);
+        rootIdx = largest;
     }
 }
 
 template <typename RandomIt, typename Compare = std::less<>>
 void make_heap(RandomIt first, RandomIt last, Compare comp = Compare()) {
-    size_t size = last - first; // should use std::dist for when its not vector
+    size_t size = std::distance(first, last);
 
-    for (int i = size / 2; i >= 0; --i)
-        heapify(first, i, size, comp);
+    for (int i = (size / 2); i >= 0; --i)
+        heapify(first, last, first + i, comp);
+}
+
+template <typename RandomIt, typename Compare = std::less<>>
+void pop_heap(RandomIt first, RandomIt last, Compare comp = Compare()) {
+    size_t size = std::distance(first, last);
+
+    if (size > 1) {
+        std::swap(*first, *(last - 1));
+        heapify(first, last, first, comp);
+    }
 }
 
 template <typename RandomIt, typename Compare>
-void bubble_up(RandomIt first, size_t index, Compare comp) {
-    while (index > 0) {
-        size_t parentIndex = (index - 1) / 2;
+void bubble_up(RandomIt first, RandomIt last, const Compare& comp) {
+    int childIndex = std::distance(first, last) - 1;
 
-        if (!comp(*(first + parentIndex), *(first + index)))
+    while (childIndex > 0) {
+        int parentIndex = (childIndex - 1) / 2;
+        auto parent = first + parentIndex;
+
+        if (!comp(*parent, *(first + childIndex)))
             break;
 
-        std::swap(*(first + parentIndex), *(first + index));
-        index = parentIndex; 
+        std::swap(*parent, *(first + childIndex));
+        childIndex = parentIndex;
     }
 }
 
 template <typename RandomIt, typename Compare = std::less<>>
 void push_heap(RandomIt first, RandomIt last, Compare comp = Compare()) {
-    size_t size = last - first; // should use std::dist for when its not vector
+    size_t size = std::distance(first, last);
 
-    if (size > 1) 
-        bubble_up(first, size - 1, comp);
+    if (size > 1)
+        bubble_up(first, last, comp);
 }
 
-template <typename RandomIt, typename Compare = std::less<>>
-void pop_heap(RandomIt first, RandomIt last, Compare comp = Compare()) {
-    size_t size = last - first; // should use std::dist for when its not vector
+int main()
+{
+    std::vector<int> v = { 1, 9, 2, 5, 3, 15, 6, 98, 10 };
 
-    if (size > 1) {
-        std::swap(*first, *(last - 1));
-        heapify(first, 0, size - 1, comp);
-    }
-}
+    make_heap(v.begin(), v.end());
 
-template <typename RandomIt, typename Compare = std::less<>>
-bool is_heap(RandomIt first, RandomIt last, Compare comp = Compare()) {
-    size_t size = last - first; // should use std:: dist for when its not vector
+    for (auto i : v)
+        std::cout << i << " ";
 
-    for (size_t i = 0; i < size / 2; ++i) {
-        size_t leftChild = 2 * i + 1;
-        size_t rightChild = 2 * i + 2;
+    pop_heap(v.begin(), v.end());
 
-        if (leftChild < size && comp(*(first + i), *(first + leftChild)))
-            return false;
+    for (auto i : v)
+        std::cout << i << " ";
 
-        if (rightChild < size && comp(*(first + i), *(first + rightChild)))
-            return false;
-    }
+    push_heap(v.begin(), v.end());
 
-    return true;
+    for (auto i : v)
+        std::cout << i << " ";
 }
 ```
 
-Както се вижда, по default методите използват `std::less<>` за сравнение на обектите, така че default-ния heap е `maxHeap`. 
+Както се вижда, по default методите използват `std::less<>` за сравнение на обектите, така че default-ния heap, който ще създадем, е `maxHeap`. 
 
 > [!NOTE]
 > Ако искаме да създадем `minHeap`, то като comparator трябва да подадем `std::greater<>`.
@@ -189,7 +200,7 @@ public:
 
 И тук, ако искаме да създадем minHeap, трябва да подадем `std::greater<>` като custom comparator.
 
-### Пример с min-heap
+### Пример за създаване на min-heap
 
 ```c++
 #include <queue>
