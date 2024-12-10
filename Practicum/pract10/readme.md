@@ -145,3 +145,5 @@ int main() {
 ```
 ----
 [Линк към задачите](https://leetcode.com/problem-list/asohzosr/)
+В час : №3, №500, №3330
+Вкъщи: №49, №859
