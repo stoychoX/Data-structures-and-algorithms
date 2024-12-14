@@ -4,7 +4,7 @@
 
 ## Heap sort
 
-# Абстрактен тип данни dictionary. Хеш таблици. Реализация на феш таблици.
+# Абстрактен тип данни dictionary. Хеш таблици. Реализация на хеш таблици.
 *A common problem in computer science is the representation of a mapping between two sets.*
 
 ## Абстрактен тип данни множество (set) и речник (dictionary/map/associative array)
