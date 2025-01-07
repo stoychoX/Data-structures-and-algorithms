@@ -1,7 +1,7 @@
 # Lex Stable Формат за дата и време в C++
 
-## Формата `LexStable` - overview
-Форматът **Lex Stable** следва тази структура:
+## Форматът `Lex Stable` - overview
+Форматът **Lex Stable** следва следната структура:
 
 ```
 YYYY-MM-DD HH:MM:SS
