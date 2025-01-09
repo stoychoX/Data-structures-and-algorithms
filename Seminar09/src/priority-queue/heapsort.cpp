@@ -58,8 +58,8 @@ void heap_sort(std::vector<int>& data)
 
     for (size_t i = 0; i < data.size() - 1; i++)
     {
-        std::swap(data[0], data[current_min--]);
-        heapify(data, 0, current_min);
+        std::swap(data[0], data[current_min]);
+        heapify(data, 0, current_min--);
     }
 }
 
