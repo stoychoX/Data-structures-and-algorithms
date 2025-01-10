@@ -197,6 +197,7 @@ void linear_probing_hashmap<Key, Value, Hash>::erase(const Key& key)
 		{
 			current_node.deleted = true;
 			current_node.empty = true;
+			_size--;
 			break;
 		}
 
