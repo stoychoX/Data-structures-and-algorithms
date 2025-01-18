@@ -76,10 +76,8 @@ mst_info prim(const weighted_graph& g, vertex_index_t start = 0)
 
 int main()
 {
-    // Create a weighted graph with 7 vertices, undirected
     weighted_graph g(7, false);
 
-    // Add edges with weights
     g.add_edge(0, 1, 4);
     g.add_edge(0, 2, 3);
     g.add_edge(1, 2, 1);
@@ -90,19 +88,11 @@ int main()
     g.add_edge(4, 6, 8);
     g.add_edge(5, 6, 4);
 
-    // g.add_edge(0, 1, 10);
-    // g.add_edge(0, 2, 5);
-    // g.add_edge(1, 2, 1);
-    // g.add_edge(1, 3, 2);
-    // g.add_edge(2, 3, 3);
 
-    // Run Prim's algorithm
     auto result = prim(g);
 
-    // Print the total cost of the MST
     std::cout << "Total cost of MST: " << result.cost << '\n';
 
-    // Print the tree structure
     std::cout << "Tree structure (parent array): ";
     for (const auto x : result.tree)
     {

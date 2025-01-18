@@ -80,10 +80,8 @@ mst_info kruskal(const weighted_graph& g)
 
 int main()
 {
-    // Create a weighted graph with 7 vertices, undirected
     weighted_graph g(7, false);
 
-    // Add edges with weights
     g.add_edge(0, 1, 4);
     g.add_edge(0, 2, 3);
     g.add_edge(1, 2, 1);
